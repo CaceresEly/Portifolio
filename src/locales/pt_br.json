@@ -1,0 +1,55 @@
+{
+  "navbar": {
+    "about": "Sobre",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "experience": "Experiência",
+    "contact": "Contato"
+  },
+  "hero": {
+    "eyebrow": "Olá, eu sou",
+    "title": "Lucas Cáceres",
+    "subtitle": "Desenvolvedor Full Stack & Especialista Power Platform",
+    "description": "Desenvolvo aplicações web escaláveis, automações corporativas e sistemas integrados usando React, Power Platform, SharePoint, Python e APIs.",
+    "download": "Baixar Currículo",
+    "contact": "Entrar em Contato",
+    "focus": "Foco do Portfólio",
+    "frontendTitle": "Front-end",
+    "frontendDescription": "React, TypeScript e arquitetura moderna de interfaces.",
+    "businessTitle": "Aplicações Corporativas",
+    "businessDescription": "Soluções com Power Apps, Power Automate e SharePoint.",
+    "automationTitle": "Automação",
+    "automationDescription": "Scripts Python, integrações com APIs e otimização de processos."
+  },
+  "about": {
+    "eyebrow": "Sobre Mim",
+    "title": "Criando soluções corporativas que tornam o trabalho das pessoas mais simples.",
+    "paragraph1": "Sou Desenvolvedor Full Stack e atualmente trabalho como Desenvolvedor Power Platform na ARLANXEO, criando aplicações corporativas, automações de processos e integrações de sistemas utilizados por equipes internacionais.",
+    "paragraph2": "No meu dia a dia, combino React, JavaScript, Python, SharePoint, Power Apps, Power Automate e Power BI para entregar soluções escaláveis focadas em produtividade, transformação digital e experiência do usuário.",
+    "paragraph3": "Além das tecnologias Microsoft, também gosto de desenvolver aplicações web modernas, estudar arquitetura de software e explorar IA, automação e tecnologias em nuvem.",
+    "experienceTitle": "💼 Experiência",
+    "experienceText": "Desenvolvedor Power Platform na ARLANXEO, desenvolvendo soluções corporativas para equipes internacionais.",
+    "technologiesTitle": "🚀 Principais Tecnologias",
+    "technologiesText": "React • TypeScript • Power Apps • Power Automate • SharePoint • Python • Node.js • Power BI",
+    "languagesTitle": "🌎 Idiomas",
+    "languagesText": "Português (Nativo) | Inglês (Avançado)"
+  },
+  "expertise": {
+    "eyebrow": "Principais Competências",
+    "title": "Uma stack técnica focada em impacto para o negócio.",
+    "description": "Minha experiência combina aplicações corporativas, automação, desenvolvimento web e integração de sistemas para entregar soluções práticas para problemas reais de negócio."
+  },
+  "projects": {
+    "eyebrow": "Projetos em Destaque",
+    "title": "Soluções reais para automação, aplicações corporativas e desenvolvimento web."
+  },
+  "experience": {
+    "eyebrow": "Experiência",
+    "title": "Experiência prática criando aplicações corporativas."
+  },
+  "contact": {
+    "eyebrow": "Contato",
+    "title": "Vamos construir algo juntos.",
+    "description": "Estou aberto a oportunidades envolvendo React, Power Platform, automação, SharePoint, Python e desenvolvimento Full Stack."
+  }
+}

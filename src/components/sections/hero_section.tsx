@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 const technologies = [
   'React',
   'TypeScript',
@@ -10,38 +12,38 @@ const technologies = [
 ];
 
 function HeroSection() {
+  const { t } = useTranslation();
+
   return (
     <section
-    id="home"
-    className="flex min-h-screen w-full items-center justify-center px-6 pt-24"
+      id="home"
+      className="flex min-h-screen w-full items-center justify-center px-6 pt-24"
     >
-    <div className="mx-auto grid w-full max-w-6xl gap-12 md:grid-cols-2 md:items-center">
+      <div className="mx-auto grid w-full max-w-6xl gap-12 md:grid-cols-2 md:items-center">
         <div>
           <p
             className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
             style={{ color: 'var(--color-primary)' }}
           >
-            Hello, I&apos;m
+            {t('hero.eyebrow')}
           </p>
 
           <h1 className="text-5xl font-bold leading-tight md:text-7xl">
-            Lucas Cáceres
+            {t('hero.title')}
           </h1>
 
           <h2
             className="mt-6 text-2xl font-semibold md:text-3xl"
             style={{ color: 'var(--color-text-muted)' }}
           >
-            Full Stack Developer & Power Platform Specialist
+            {t('hero.subtitle')}
           </h2>
 
           <p
             className="mt-6 max-w-2xl text-lg leading-8"
             style={{ color: 'var(--color-text-muted)' }}
           >
-            I build scalable web applications, enterprise automation solutions
-            and integrated systems using React, Power Platform, SharePoint,
-            Python and APIs.
+            {t('hero.description')}
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">
@@ -53,7 +55,7 @@ function HeroSection() {
                 color: 'var(--color-background)',
               }}
             >
-              Download Resume
+              {t('hero.download')}
             </a>
 
             <a
@@ -64,7 +66,7 @@ function HeroSection() {
                 color: 'var(--color-text)',
               }}
             >
-              Contact Me
+              {t('hero.contact')}
             </a>
           </div>
 
@@ -101,6 +103,7 @@ function HeroSection() {
           <div className="mt-8 space-y-5">
             <div>
               <strong>Frontend</strong>
+
               <p style={{ color: 'var(--color-text-muted)' }}>
                 React, TypeScript and modern UI architecture.
               </p>
@@ -108,6 +111,7 @@ function HeroSection() {
 
             <div>
               <strong>Business Apps</strong>
+
               <p style={{ color: 'var(--color-text-muted)' }}>
                 Power Apps, Power Automate and SharePoint solutions.
               </p>
@@ -115,6 +119,7 @@ function HeroSection() {
 
             <div>
               <strong>Automation</strong>
+
               <p style={{ color: 'var(--color-text-muted)' }}>
                 Python scripts, API integrations and process optimization.
               </p>
