@@ -11,9 +11,16 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-text);
   font-family: Inter, sans-serif;
-  transition: 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
