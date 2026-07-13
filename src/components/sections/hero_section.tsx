@@ -16,15 +16,15 @@ function HeroSection() {
 
   const currentLanguage = i18n.resolvedLanguage ?? i18n.language;
 
-  const resumePath =
-    currentLanguage === 'pt-BR'
-      ? '/documents/lucas_caceres_curriculo.pdf'
-      : '/documents/lucas_caceres_resume.pdf';
+  const isPortuguese = currentLanguage === 'pt-BR';
 
-  const resumeFileName =
-    currentLanguage === 'pt-BR'
-      ? 'Curriculo_Lucas_Caceres.pdf'
-      : 'Lucas_Caceres_Resume.pdf';
+  const resumePath = isPortuguese
+    ? '/documents/curriculo_lucas_caceres_pt_br.pdf'
+    : '/documents/resume_lucas_caceres_en.pdf';
+
+  const resumeFileName = isPortuguese
+    ? 'Curriculo_Lucas_Caceres.pdf'
+    : 'Lucas_Caceres_Resume.pdf';
 
   return (
     <section
@@ -69,6 +69,19 @@ function HeroSection() {
               }}
             >
               {t('hero.download')}
+            </a>
+
+            <a
+              href={resumePath}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border px-6 py-3 text-sm font-semibold transition hover:scale-105"
+              style={{
+                borderColor: 'var(--color-primary)',
+                color: 'var(--color-primary)',
+              }}
+            >
+              {t('hero.preview')}
             </a>
 
             <a
