@@ -91,5 +91,11 @@
     "email": "E-mail",
     "linkedin": "LinkedIn",
     "github": "GitHub"
-  }
+  }, 
+
+  "footer": {
+  "role": "Desenvolvedor Full Stack & Especialista Power Platform",
+  "rights": "Todos os direitos reservados.",
+  "backToTop": "Voltar ao topo"
+}
 }
