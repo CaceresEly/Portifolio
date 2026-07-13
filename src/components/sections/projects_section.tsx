@@ -1,31 +1,31 @@
-const projects = [
-  {
-    title: 'Activity Management App',
-    description:
-      'Power Apps solution integrated with SharePoint, Power Automate and Power BI to manage activities, track status and monitor weekly planning.',
-    stack: ['Power Apps', 'SharePoint', 'Power Automate', 'Power BI'],
-  },
-  {
-    title: 'Invoice Generation System',
-    description:
-      'Business solution to generate PDF invoices using Power Apps, Power Automate and JavaScript document processing.',
-    stack: ['Power Apps', 'Power Automate', 'JavaScript', 'SharePoint'],
-  },
-  {
-    title: 'IBM Notes to SharePoint Migration',
-    description:
-      'Automation process for converting, organizing and migrating corporate documents from IBM Notes to SharePoint.',
-    stack: ['Python', 'SharePoint', 'Power Automate'],
-  },
-  {
-    title: 'AI Trading Automation',
-    description:
-      'Python-based automation project integrated with MetaTrader to process market signals and manage trading operations.',
-    stack: ['Python', 'MetaTrader', 'Automation', 'AI'],
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 function ProjectsSection() {
+  const { t } = useTranslation();
+
+  const projects = [
+    {
+      title: t('projects.activityTitle'),
+      description: t('projects.activityDescription'),
+      stack: ['Power Apps', 'SharePoint', 'Power Automate', 'Power BI'],
+    },
+    {
+      title: t('projects.invoiceTitle'),
+      description: t('projects.invoiceDescription'),
+      stack: ['Power Apps', 'Power Automate', 'JavaScript', 'SharePoint'],
+    },
+    {
+      title: t('projects.migrationTitle'),
+      description: t('projects.migrationDescription'),
+      stack: ['Python', 'SharePoint', 'Power Automate'],
+    },
+    {
+      title: t('projects.tradingTitle'),
+      description: t('projects.tradingDescription'),
+      stack: ['Python', 'MetaTrader', 'Automation', 'AI'],
+    },
+  ];
+
   return (
     <section
       id="projects"
@@ -36,11 +36,11 @@ function ProjectsSection() {
           className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
           style={{ color: 'var(--color-primary)' }}
         >
-          Featured Projects
+          {t('projects.eyebrow')}
         </p>
 
         <h2 className="max-w-3xl text-4xl font-bold md:text-5xl">
-          Real solutions for automation, business apps and web development.
+          {t('projects.title')}
         </h2>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -63,16 +63,16 @@ function ProjectsSection() {
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                {project.stack.map((tech) => (
+                {project.stack.map((technology) => (
                   <span
-                    key={tech}
+                    key={technology}
                     className="rounded-full border px-4 py-2 text-sm"
                     style={{
                       borderColor: 'var(--color-border)',
                       color: 'var(--color-text-muted)',
                     }}
                   >
-                    {tech}
+                    {technology}
                   </span>
                 ))}
               </div>

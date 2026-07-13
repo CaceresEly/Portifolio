@@ -32,24 +32,53 @@
     "technologiesTitle": "🚀 Principais Tecnologias",
     "technologiesText": "React • TypeScript • Power Apps • Power Automate • SharePoint • Python • Node.js • Power BI",
     "languagesTitle": "🌎 Idiomas",
-    "languagesText": "Português (Nativo) | Inglês (Avançado)"
+    "portuguese": "Português (Nativo)",
+    "english": "Inglês (Avançado)"
   },
   "expertise": {
     "eyebrow": "Principais Competências",
     "title": "Uma stack técnica focada em impacto para o negócio.",
-    "description": "Minha experiência combina aplicações corporativas, automação, desenvolvimento web e integração de sistemas para entregar soluções práticas para problemas reais de negócio."
+    "description": "Minha experiência combina aplicações corporativas, automação, desenvolvimento web e integração de sistemas para entregar soluções práticas para problemas reais de negócio.",
+    "enterpriseTitle": "Soluções Corporativas",
+    "enterpriseDescription": "Aplicações empresariais, automação de processos e fluxos de trabalho corporativos.",
+    "fullStackTitle": "Desenvolvimento Full Stack",
+    "fullStackDescription": "Interfaces web modernas, APIs e estruturas escaláveis de aplicações.",
+    "automationTitle": "Automação e IA",
+    "automationDescription": "Scripts, fluxos inteligentes e automação de documentos e processos.",
+    "toolsTitle": "Ferramentas e Plataformas",
+    "toolsDescription": "Ferramentas de desenvolvimento, bancos de dados e plataformas utilizadas nos projetos."
   },
   "projects": {
     "eyebrow": "Projetos em Destaque",
-    "title": "Soluções reais para automação, aplicações corporativas e desenvolvimento web."
+    "title": "Soluções reais para automação, aplicações corporativas e desenvolvimento web.",
+    "activityTitle": "Aplicativo de Gerenciamento de Atividades",
+    "activityDescription": "Solução Power Apps integrada ao SharePoint, Power Automate e Power BI para gerenciar atividades, acompanhar status e monitorar o planejamento semanal.",
+    "invoiceTitle": "Sistema de Geração de Faturas",
+    "invoiceDescription": "Solução corporativa para gerar faturas em PDF utilizando Power Apps, Power Automate e processamento de documentos com JavaScript.",
+    "migrationTitle": "Migração do IBM Notes para o SharePoint",
+    "migrationDescription": "Processo automatizado para converter, organizar e migrar documentos corporativos do IBM Notes para o SharePoint.",
+    "tradingTitle": "Automação de Trading com IA",
+    "tradingDescription": "Projeto de automação desenvolvido em Python e integrado ao MetaTrader para processar sinais de mercado e gerenciar operações."
   },
   "experience": {
     "eyebrow": "Experiência",
-    "title": "Experiência prática criando aplicações corporativas."
+    "title": "Experiência prática criando aplicações corporativas.",
+    "role": "Desenvolvedor Power Platform",
+    "location": "Porto Alegre, Brasil · Remoto",
+    "period": "2024 — Atualmente",
+    "description": "Desenvolvimento de soluções corporativas focadas em automação de processos, integração de sistemas e otimização de fluxos de trabalho com equipes internacionais.",
+    "highlight1": "Desenvolvimento de Power Apps integrados ao SharePoint, Power Automate e Power BI.",
+    "highlight2": "Automação da migração de dados do Excel, acompanhamento de status e planejamento semanal.",
+    "highlight3": "Desenvolvimento de soluções para geração automatizada de faturas em PDF.",
+    "highlight4": "Criação de sistemas de gerenciamento de solicitações de RH com resumos automáticos por e-mail.",
+    "highlight5": "Automação da migração de documentos do IBM Notes para o SharePoint utilizando Python e Power Automate."
   },
   "contact": {
     "eyebrow": "Contato",
     "title": "Vamos construir algo juntos.",
-    "description": "Estou aberto a oportunidades envolvendo React, Power Platform, automação, SharePoint, Python e desenvolvimento Full Stack."
+    "description": "Estou aberto a oportunidades envolvendo React, Power Platform, automação, SharePoint, Python e desenvolvimento Full Stack.",
+    "email": "E-mail",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   }
 }

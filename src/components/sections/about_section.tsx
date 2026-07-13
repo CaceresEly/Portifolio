@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 function AboutSection() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="about"
@@ -10,40 +14,30 @@ function AboutSection() {
             className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
             style={{ color: 'var(--color-primary)' }}
           >
-            About Me
+            {t('about.eyebrow')}
           </p>
 
-          <h2 className="text-4xl font-bold">
-            Building enterprise solutions that make people's work easier.
-          </h2>
+          <h2 className="text-4xl font-bold">{t('about.title')}</h2>
 
           <p
             className="mt-8 text-lg leading-8"
             style={{ color: 'var(--color-text-muted)' }}
           >
-            I'm a Full Stack Developer currently working as a Power Platform
-            Developer at ARLANXEO, where I build enterprise applications,
-            automate business processes and integrate corporate systems used by
-            international teams.
+            {t('about.paragraph1')}
           </p>
 
           <p
             className="mt-6 text-lg leading-8"
             style={{ color: 'var(--color-text-muted)' }}
           >
-            My daily work combines React, JavaScript, Python, SharePoint,
-            Power Apps, Power Automate and Power BI to deliver scalable
-            solutions focused on productivity, digital transformation and user
-            experience.
+            {t('about.paragraph2')}
           </p>
 
           <p
             className="mt-6 text-lg leading-8"
             style={{ color: 'var(--color-text-muted)' }}
           >
-            Besides Microsoft technologies, I enjoy building modern web
-            applications, studying software architecture and exploring AI,
-            automation and cloud technologies.
+            {t('about.paragraph3')}
           </p>
         </div>
 
@@ -56,15 +50,14 @@ function AboutSection() {
             }}
           >
             <h3 className="text-xl font-semibold">
-              💼 Experience
+              {t('about.experienceTitle')}
             </h3>
 
             <p
               className="mt-4"
               style={{ color: 'var(--color-text-muted)' }}
             >
-              Power Platform Developer at ARLANXEO developing enterprise
-              solutions for international teams.
+              {t('about.experienceText')}
             </p>
           </div>
 
@@ -76,15 +69,14 @@ function AboutSection() {
             }}
           >
             <h3 className="text-xl font-semibold">
-              🚀 Main Technologies
+              {t('about.technologiesTitle')}
             </h3>
 
             <p
               className="mt-4"
               style={{ color: 'var(--color-text-muted)' }}
             >
-              React • TypeScript • Power Apps • Power Automate •
-              SharePoint • Python • Node.js • Power BI
+              {t('about.technologiesText')}
             </p>
           </div>
 
@@ -96,16 +88,16 @@ function AboutSection() {
             }}
           >
             <h3 className="text-xl font-semibold">
-              🌎 Languages
+              {t('about.languagesTitle')}
             </h3>
 
             <p
               className="mt-4"
               style={{ color: 'var(--color-text-muted)' }}
             >
-              Portuguese (Native)
+              {t('about.portuguese')}
               <br />
-              English (Advanced)
+              {t('about.english')}
             </p>
           </div>
         </div>

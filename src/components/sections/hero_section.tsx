@@ -97,31 +97,28 @@ function HeroSection() {
             className="text-sm uppercase tracking-[0.3em]"
             style={{ color: 'var(--color-primary)' }}
           >
-            Portfolio Focus
+            {t('hero.focus')}
           </p>
 
           <div className="mt-8 space-y-5">
             <div>
-              <strong>Frontend</strong>
-
+              <strong>{t('hero.frontendTitle')}</strong>
               <p style={{ color: 'var(--color-text-muted)' }}>
-                React, TypeScript and modern UI architecture.
+                {t('hero.frontendDescription')}
               </p>
             </div>
 
             <div>
-              <strong>Business Apps</strong>
-
+              <strong>{t('hero.businessTitle')}</strong>
               <p style={{ color: 'var(--color-text-muted)' }}>
-                Power Apps, Power Automate and SharePoint solutions.
+                {t('hero.businessDescription')}
               </p>
             </div>
 
             <div>
-              <strong>Automation</strong>
-
+              <strong>{t('hero.automationTitle')}</strong>
               <p style={{ color: 'var(--color-text-muted)' }}>
-                Python scripts, API integrations and process optimization.
+                {t('hero.automationDescription')}
               </p>
             </div>
           </div>

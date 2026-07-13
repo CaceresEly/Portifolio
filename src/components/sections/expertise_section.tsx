@@ -1,27 +1,51 @@
-const expertiseGroups = [
-  {
-    title: 'Enterprise Solutions',
-    description: 'Business applications, process automation and corporate workflows.',
-    skills: ['Power Apps', 'Power Automate', 'SharePoint', 'Power BI', 'Copilot Studio'],
-  },
-  {
-    title: 'Full Stack Development',
-    description: 'Modern web interfaces, APIs and scalable application foundations.',
-    skills: ['React', 'TypeScript', 'JavaScript', 'Node.js', 'REST APIs', 'HTML', 'CSS'],
-  },
-  {
-    title: 'Automation & AI',
-    description: 'Scripts, intelligent workflows and document/process automation.',
-    skills: ['Python', 'AI Agents', 'n8n', 'Document Processing', 'IBM Notes Migration'],
-  },
-  {
-    title: 'Tools & Platforms',
-    description: 'Development tools, databases and platforms used across projects.',
-    skills: ['Git', 'Azure', 'MySQL', 'PostgreSQL', 'Next.js', 'Vue'],
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 function ExpertiseSection() {
+  const { t } = useTranslation();
+
+  const expertiseGroups = [
+    {
+      title: t('expertise.enterpriseTitle'),
+      description: t('expertise.enterpriseDescription'),
+      skills: [
+        'Power Apps',
+        'Power Automate',
+        'SharePoint',
+        'Power BI',
+        'Copilot Studio',
+      ],
+    },
+    {
+      title: t('expertise.fullStackTitle'),
+      description: t('expertise.fullStackDescription'),
+      skills: [
+        'React',
+        'TypeScript',
+        'JavaScript',
+        'Node.js',
+        'REST APIs',
+        'HTML',
+        'CSS',
+      ],
+    },
+    {
+      title: t('expertise.automationTitle'),
+      description: t('expertise.automationDescription'),
+      skills: [
+        'Python',
+        'AI Agents',
+        'n8n',
+        'Document Processing',
+        'IBM Notes Migration',
+      ],
+    },
+    {
+      title: t('expertise.toolsTitle'),
+      description: t('expertise.toolsDescription'),
+      skills: ['Git', 'Azure', 'MySQL', 'PostgreSQL', 'Next.js', 'Vue'],
+    },
+  ];
+
   return (
     <section
       id="skills"
@@ -32,20 +56,18 @@ function ExpertiseSection() {
           className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
           style={{ color: 'var(--color-primary)' }}
         >
-          Core Expertise
+          {t('expertise.eyebrow')}
         </p>
 
         <h2 className="max-w-3xl text-4xl font-bold md:text-5xl">
-          A technical stack focused on business impact.
+          {t('expertise.title')}
         </h2>
 
         <p
           className="mt-6 max-w-3xl text-lg leading-8"
           style={{ color: 'var(--color-text-muted)' }}
         >
-          My experience combines enterprise applications, automation, web
-          development and system integrations to deliver practical solutions for
-          real business problems.
+          {t('expertise.description')}
         </p>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">

@@ -32,24 +32,53 @@
     "technologiesTitle": "🚀 Main Technologies",
     "technologiesText": "React • TypeScript • Power Apps • Power Automate • SharePoint • Python • Node.js • Power BI",
     "languagesTitle": "🌎 Languages",
-    "languagesText": "Portuguese (Native) | English (Advanced)"
+    "portuguese": "Portuguese (Native)",
+    "english": "English (Advanced)"
   },
   "expertise": {
     "eyebrow": "Core Expertise",
     "title": "A technical stack focused on business impact.",
-    "description": "My experience combines enterprise applications, automation, web development and system integrations to deliver practical solutions for real business problems."
+    "description": "My experience combines enterprise applications, automation, web development and system integrations to deliver practical solutions for real business problems.",
+    "enterpriseTitle": "Enterprise Solutions",
+    "enterpriseDescription": "Business applications, process automation and corporate workflows.",
+    "fullStackTitle": "Full Stack Development",
+    "fullStackDescription": "Modern web interfaces, APIs and scalable application foundations.",
+    "automationTitle": "Automation & AI",
+    "automationDescription": "Scripts, intelligent workflows and document or process automation.",
+    "toolsTitle": "Tools & Platforms",
+    "toolsDescription": "Development tools, databases and platforms used across projects."
   },
   "projects": {
     "eyebrow": "Featured Projects",
-    "title": "Real solutions for automation, business apps and web development."
+    "title": "Real solutions for automation, business apps and web development.",
+    "activityTitle": "Activity Management App",
+    "activityDescription": "Power Apps solution integrated with SharePoint, Power Automate and Power BI to manage activities, track status and monitor weekly planning.",
+    "invoiceTitle": "Invoice Generation System",
+    "invoiceDescription": "Business solution to generate PDF invoices using Power Apps, Power Automate and JavaScript document processing.",
+    "migrationTitle": "IBM Notes to SharePoint Migration",
+    "migrationDescription": "Automation process for converting, organizing and migrating corporate documents from IBM Notes to SharePoint.",
+    "tradingTitle": "AI Trading Automation",
+    "tradingDescription": "Python-based automation project integrated with MetaTrader to process market signals and manage trading operations."
   },
   "experience": {
     "eyebrow": "Experience",
-    "title": "Practical experience building enterprise applications."
+    "title": "Practical experience building enterprise applications.",
+    "role": "Power Platform Developer",
+    "location": "Porto Alegre, Brazil · Remote",
+    "period": "2024 — Present",
+    "description": "Development of enterprise solutions focused on process automation, system integrations and corporate workflow optimization with international teams.",
+    "highlight1": "Built Power Apps integrated with SharePoint, Power Automate and Power BI.",
+    "highlight2": "Automated Excel data migration, status tracking and weekly planning workflows.",
+    "highlight3": "Developed invoice generation solutions with PDF automation.",
+    "highlight4": "Created HR request management systems with automated email summaries.",
+    "highlight5": "Automated IBM Notes to SharePoint document migration using Python and Power Automate."
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's build something together.",
-    "description": "I'm open to opportunities involving React, Power Platform, automation, SharePoint, Python and full stack development."
+    "description": "I'm open to opportunities involving React, Power Platform, automation, SharePoint, Python and full stack development.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
   }
 }

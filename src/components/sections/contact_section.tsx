@@ -1,22 +1,29 @@
-const contactLinks = [
-  {
-    label: 'Email',
-    value: 'caceresely10@gmail.com',
-    href: 'mailto:caceresely10@gmail.com',
-  },
-  {
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/lucas-cáceres',
-    href: 'https://www.linkedin.com/in/lucas-c%C3%A1ceres-841859206/',
-  },
-  {
-    label: 'GitHub',
-    value: 'github.com/ttbns030',
-    href: 'https://github.com/ttbns030',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 function ContactSection() {
+  const { t } = useTranslation();
+
+  const contactLinks = [
+    {
+      label: t('contact.email'),
+      value: 'caceresely10@gmail.com',
+      href: 'mailto:caceresely10@gmail.com',
+      external: false,
+    },
+    {
+      label: t('contact.linkedin'),
+      value: 'linkedin.com/in/lucas-cáceres',
+      href: 'https://www.linkedin.com/in/lucas-c%C3%A1ceres-841859206/',
+      external: true,
+    },
+    {
+      label: t('contact.github'),
+      value: 'github.com/ttbns030',
+      href: 'https://github.com/ttbns030',
+      external: true,
+    },
+  ];
+
   return (
     <section
       id="contact"
@@ -27,28 +34,27 @@ function ContactSection() {
           className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
           style={{ color: 'var(--color-primary)' }}
         >
-          Contact
+          {t('contact.eyebrow')}
         </p>
 
         <h2 className="text-4xl font-bold md:text-5xl">
-          Let&apos;s build something together.
+          {t('contact.title')}
         </h2>
 
         <p
           className="mx-auto mt-6 max-w-2xl text-lg leading-8"
           style={{ color: 'var(--color-text-muted)' }}
         >
-          I&apos;m open to opportunities involving React, Power Platform,
-          automation, SharePoint, Python and full stack development.
+          {t('contact.description')}
         </p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {contactLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.href}
               href={link.href}
-              target={link.label === 'Email' ? undefined : '_blank'}
-              rel={link.label === 'Email' ? undefined : 'noreferrer'}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noreferrer' : undefined}
               className="rounded-3xl border p-6 text-left transition hover:-translate-y-1"
               style={{
                 background: 'var(--color-surface)',

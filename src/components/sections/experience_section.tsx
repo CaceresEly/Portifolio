@@ -1,31 +1,26 @@
-const experiences = [
-  {
-    role: 'Power Platform Developer',
-    company: 'ARLANXEO',
-    location: 'Porto Alegre, Brazil · Remote',
-    period: '2024 — Present',
-    description:
-      'Development of enterprise solutions focused on process automation, system integrations and corporate workflow optimization with international teams.',
-    highlights: [
-      'Built Power Apps integrated with SharePoint, Power Automate and Power BI.',
-      'Automated Excel data migration, status tracking and weekly planning workflows.',
-      'Developed invoice generation solutions with PDF automation.',
-      'Created HR request management systems with automated email summaries.',
-      'Automated IBM Notes to SharePoint document migration using Python and Power Automate.',
-    ],
-    stack: [
-      'Power Apps',
-      'Power Automate',
-      'SharePoint',
-      'Power BI',
-      'Python',
-      'JavaScript',
-      'Copilot Studio',
-    ],
-  },
+import { useTranslation } from 'react-i18next';
+
+const stack = [
+  'Power Apps',
+  'Power Automate',
+  'SharePoint',
+  'Power BI',
+  'Python',
+  'JavaScript',
+  'Copilot Studio',
 ];
 
 function ExperienceSection() {
+  const { t } = useTranslation();
+
+  const highlights = [
+    t('experience.highlight1'),
+    t('experience.highlight2'),
+    t('experience.highlight3'),
+    t('experience.highlight4'),
+    t('experience.highlight5'),
+  ];
+
   return (
     <section
       id="experience"
@@ -36,90 +31,85 @@ function ExperienceSection() {
           className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
           style={{ color: 'var(--color-primary)' }}
         >
-          Experience
+          {t('experience.eyebrow')}
         </p>
 
         <h2 className="max-w-3xl text-4xl font-bold md:text-5xl">
-          Practical experience building enterprise applications.
+          {t('experience.title')}
         </h2>
 
-        <div className="mt-14 space-y-8">
-          {experiences.map((experience) => (
-            <article
-              key={`${experience.company}-${experience.role}`}
-              className="rounded-3xl border p-8"
-              style={{
-                background: 'var(--color-surface)',
-                borderColor: 'var(--color-border)',
-              }}
-            >
-              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                <div>
-                  <h3 className="text-2xl font-bold">{experience.role}</h3>
-
-                  <p
-                    className="mt-2 text-lg font-semibold"
-                    style={{ color: 'var(--color-primary)' }}
-                  >
-                    {experience.company}
-                  </p>
-
-                  <p
-                    className="mt-2"
-                    style={{ color: 'var(--color-text-muted)' }}
-                  >
-                    {experience.location}
-                  </p>
-                </div>
-
-                <span
-                  className="rounded-full border px-4 py-2 text-sm"
-                  style={{
-                    borderColor: 'var(--color-border)',
-                    color: 'var(--color-text-muted)',
-                  }}
-                >
-                  {experience.period}
-                </span>
-              </div>
+        <article
+          className="mt-14 rounded-3xl border p-8"
+          style={{
+            background: 'var(--color-surface)',
+            borderColor: 'var(--color-border)',
+          }}
+        >
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div>
+              <h3 className="text-2xl font-bold">{t('experience.role')}</h3>
 
               <p
-                className="mt-8 max-w-4xl leading-7"
-                style={{ color: 'var(--color-text-muted)' }}
+                className="mt-2 text-lg font-semibold"
+                style={{ color: 'var(--color-primary)' }}
               >
-                {experience.description}
+                ARLANXEO
               </p>
 
-              <ul className="mt-8 space-y-3">
-                {experience.highlights.map((highlight) => (
-                  <li
-                    key={highlight}
-                    className="flex gap-3 leading-7"
-                    style={{ color: 'var(--color-text-muted)' }}
-                  >
-                    <span style={{ color: 'var(--color-primary)' }}>•</span>
-                    <span>{highlight}</span>
-                  </li>
-                ))}
-              </ul>
+              <p
+                className="mt-2"
+                style={{ color: 'var(--color-text-muted)' }}
+              >
+                {t('experience.location')}
+              </p>
+            </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                {experience.stack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border px-4 py-2 text-sm"
-                    style={{
-                      borderColor: 'var(--color-border)',
-                      color: 'var(--color-text-muted)',
-                    }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+            <span
+              className="rounded-full border px-4 py-2 text-sm"
+              style={{
+                borderColor: 'var(--color-border)',
+                color: 'var(--color-text-muted)',
+              }}
+            >
+              {t('experience.period')}
+            </span>
+          </div>
+
+          <p
+            className="mt-8 max-w-4xl leading-7"
+            style={{ color: 'var(--color-text-muted)' }}
+          >
+            {t('experience.description')}
+          </p>
+
+          <ul className="mt-8 space-y-3">
+            {highlights.map((highlight) => (
+              <li
+                key={highlight}
+                className="flex gap-3 leading-7"
+                style={{ color: 'var(--color-text-muted)' }}
+              >
+                <span style={{ color: 'var(--color-primary)' }}>•</span>
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            {stack.map((technology) => (
+              <span
+                key={technology}
+                className="rounded-full border px-4 py-2 text-sm"
+                style={{
+                  borderColor: 'var(--color-border)',
+                  color: 'var(--color-text-muted)',
+                }}
+              >
+                {technology}
+              </span>
+            ))}
+          </div>
+        </article>
       </div>
     </section>
   );
