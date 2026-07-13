@@ -12,7 +12,19 @@ const technologies = [
 ];
 
 function HeroSection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const currentLanguage = i18n.resolvedLanguage ?? i18n.language;
+
+  const resumePath =
+    currentLanguage === 'pt-BR'
+      ? '/documents/lucas_caceres_curriculo.pdf'
+      : '/documents/lucas_caceres_resume.pdf';
+
+  const resumeFileName =
+    currentLanguage === 'pt-BR'
+      ? 'Curriculo_Lucas_Caceres.pdf'
+      : 'Lucas_Caceres_Resume.pdf';
 
   return (
     <section
@@ -48,7 +60,8 @@ function HeroSection() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="#"
+              href={resumePath}
+              download={resumeFileName}
               className="rounded-full px-6 py-3 text-sm font-semibold transition hover:scale-105"
               style={{
                 background: 'var(--color-primary)',
@@ -103,6 +116,7 @@ function HeroSection() {
           <div className="mt-8 space-y-5">
             <div>
               <strong>{t('hero.frontendTitle')}</strong>
+
               <p style={{ color: 'var(--color-text-muted)' }}>
                 {t('hero.frontendDescription')}
               </p>
@@ -110,6 +124,7 @@ function HeroSection() {
 
             <div>
               <strong>{t('hero.businessTitle')}</strong>
+
               <p style={{ color: 'var(--color-text-muted)' }}>
                 {t('hero.businessDescription')}
               </p>
@@ -117,6 +132,7 @@ function HeroSection() {
 
             <div>
               <strong>{t('hero.automationTitle')}</strong>
+
               <p style={{ color: 'var(--color-text-muted)' }}>
                 {t('hero.automationDescription')}
               </p>
