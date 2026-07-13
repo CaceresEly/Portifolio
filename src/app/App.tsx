@@ -1,3 +1,4 @@
+import { Reveal } from '../components/common/reveal';
 import { Footer } from '../components/layout/footer';
 import { Navbar } from '../components/layout/navbar';
 import { AboutSection } from '../components/sections/about_section';
@@ -14,13 +15,33 @@ function App() {
       <Navbar />
 
       <main>
-        <HeroSection />
-        <AboutSection />
-        <ExpertiseSection />
-        <ProjectsSection />
-        <ExperienceSection />
-        <EducationSection />
-        <ContactSection />
+        <Reveal>
+          <HeroSection />
+        </Reveal>
+
+        <Reveal>
+          <AboutSection />
+        </Reveal>
+
+        <Reveal>
+          <ExpertiseSection />
+        </Reveal>
+
+        <Reveal>
+          <ProjectsSection />
+        </Reveal>
+
+        <Reveal>
+          <ExperienceSection />
+        </Reveal>
+
+        <Reveal>
+          <EducationSection />
+        </Reveal>
+
+        <Reveal>
+          <ContactSection />
+        </Reveal>
       </main>
 
       <Footer />
