@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 
 import { useTheme } from '../../hooks/use_theme';
 
@@ -7,12 +9,14 @@ const navItems = [
   { label: 'navbar.skills', href: '#skills' },
   { label: 'navbar.projects', href: '#projects' },
   { label: 'navbar.experience', href: '#experience' },
+  { label: 'navbar.education', href: '#education' },
   { label: 'navbar.contact', href: '#contact' },
 ];
 
 function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function toggleLanguage() {
     const nextLanguage = i18n.language === 'en' ? 'pt-BR' : 'en';
@@ -20,6 +24,11 @@ function Navbar() {
     i18n.changeLanguage(nextLanguage);
     localStorage.setItem('language', nextLanguage);
     document.documentElement.lang = nextLanguage;
+    setIsMenuOpen(false);
+  }
+
+  function closeMenu() {
+    setIsMenuOpen(false);
   }
 
   return (
@@ -32,11 +41,15 @@ function Navbar() {
       }}
     >
       <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
-        <a href="#home" className="text-base font-bold tracking-tight md:text-lg">
+        <a
+          href="#home"
+          onClick={closeMenu}
+          className="text-base font-bold tracking-tight md:text-lg"
+        >
           Lucas Cáceres
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -53,7 +66,8 @@ function Navbar() {
           <button
             type="button"
             onClick={toggleLanguage}
-            className="rounded-full border px-4 py-2 text-sm font-medium transition hover:scale-105"
+            aria-label="Change language"
+            className="rounded-full border px-3 py-2 text-xs font-semibold transition hover:scale-105 sm:px-4 sm:text-sm"
             style={{
               borderColor: 'var(--color-border)',
               background: 'var(--color-surface)',
@@ -71,12 +85,52 @@ function Navbar() {
             style={{
               borderColor: 'var(--color-border)',
               background: 'var(--color-surface)',
+              color: 'var(--color-text)',
             }}
           >
-            {theme === 'dark' ? '☀️' : '🌙'}
+            {theme === 'dark' ? <FiSun /> : <FiMoon />}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((current) => !current)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
+            className="flex h-10 w-10 items-center justify-center rounded-full border text-xl lg:hidden"
+            style={{
+              borderColor: 'var(--color-border)',
+              background: 'var(--color-surface)',
+              color: 'var(--color-text)',
+            }}
+          >
+            {isMenuOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
       </nav>
+
+      {isMenuOpen && (
+        <div
+          className="border-t px-6 py-5 lg:hidden"
+          style={{
+            background: 'var(--color-surface)',
+            borderColor: 'var(--color-border)',
+          }}
+        >
+          <div className="mx-auto flex max-w-6xl flex-col gap-2">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                className="rounded-xl px-4 py-3 text-sm font-medium transition hover:opacity-70"
+                style={{ color: 'var(--color-text-muted)' }}
+              >
+                {t(item.label)}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }
