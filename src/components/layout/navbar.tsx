@@ -1,34 +1,92 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 
 import { useTheme } from '../../hooks/use_theme';
 
 const navItems = [
-  { label: 'navbar.about', href: '#about' },
-  { label: 'navbar.skills', href: '#skills' },
-  { label: 'navbar.projects', href: '#projects' },
-  { label: 'navbar.experience', href: '#experience' },
-  { label: 'navbar.education', href: '#education' },
-  { label: 'navbar.contact', href: '#contact' },
+  { label: 'navbar.about', href: '#about', sectionId: 'about' },
+  { label: 'navbar.skills', href: '#skills', sectionId: 'skills' },
+  { label: 'navbar.projects', href: '#projects', sectionId: 'projects' },
+  {
+    label: 'navbar.experience',
+    href: '#experience',
+    sectionId: 'experience',
+  },
+  {
+    label: 'navbar.education',
+    href: '#education',
+    sectionId: 'education',
+  },
+  { label: 'navbar.contact', href: '#contact', sectionId: 'contact' },
 ];
 
 function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const { t, i18n } = useTranslation();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const sectionIds = ['home', ...navItems.map((item) => item.sectionId)];
+
+    const sections = sectionIds
+      .map((sectionId) => document.getElementById(sectionId))
+      .filter((section): section is HTMLElement => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (firstEntry, secondEntry) =>
+              secondEntry.intersectionRatio - firstEntry.intersectionRatio,
+          );
+
+        const mostVisibleSection = visibleEntries[0];
+
+        if (mostVisibleSection) {
+          setActiveSection(mostVisibleSection.target.id);
+        }
+      },
+      {
+        rootMargin: '-25% 0px -55% 0px',
+        threshold: [0.1, 0.25, 0.5, 0.75],
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+      observer.disconnect();
+    };
+  }, []);
 
   function toggleLanguage() {
-    const nextLanguage = i18n.language === 'en' ? 'pt-BR' : 'en';
+    const currentLanguage = i18n.resolvedLanguage ?? i18n.language;
+    const nextLanguage = currentLanguage === 'en' ? 'pt-BR' : 'en';
 
-    i18n.changeLanguage(nextLanguage);
+    void i18n.changeLanguage(nextLanguage);
+
     localStorage.setItem('language', nextLanguage);
     document.documentElement.lang = nextLanguage;
+
     setIsMenuOpen(false);
   }
 
   function closeMenu() {
     setIsMenuOpen(false);
+  }
+
+  function getLinkStyle(sectionId: string) {
+    return {
+      color:
+        activeSection === sectionId
+          ? 'var(--color-primary)'
+          : 'var(--color-text-muted)',
+    };
   }
 
   return (
@@ -44,7 +102,13 @@ function Navbar() {
         <a
           href="#home"
           onClick={closeMenu}
-          className="text-base font-bold tracking-tight md:text-lg"
+          className="text-base font-bold tracking-tight transition md:text-lg"
+          style={{
+            color:
+              activeSection === 'home'
+                ? 'var(--color-primary)'
+                : 'var(--color-text)',
+          }}
         >
           Lucas Cáceres
         </a>
@@ -54,10 +118,17 @@ function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium transition hover:opacity-70"
-              style={{ color: 'var(--color-text-muted)' }}
+              className="relative py-2 text-sm font-medium transition hover:opacity-80"
+              style={getLinkStyle(item.sectionId)}
             >
               {t(item.label)}
+
+              {activeSection === item.sectionId && (
+                <span
+                  className="absolute bottom-0 left-0 h-0.5 w-full rounded-full"
+                  style={{ background: 'var(--color-primary)' }}
+                />
+              )}
             </a>
           ))}
         </div>
@@ -74,7 +145,9 @@ function Navbar() {
               color: 'var(--color-text)',
             }}
           >
-            {i18n.language === 'en' ? 'PT-BR' : 'EN'}
+            {(i18n.resolvedLanguage ?? i18n.language) === 'en'
+              ? 'PT-BR'
+              : 'EN'}
           </button>
 
           <button
@@ -122,8 +195,17 @@ function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className="rounded-xl px-4 py-3 text-sm font-medium transition hover:opacity-70"
-                style={{ color: 'var(--color-text-muted)' }}
+                className="rounded-xl px-4 py-3 text-sm font-medium transition"
+                style={{
+                  color:
+                    activeSection === item.sectionId
+                      ? 'var(--color-primary)'
+                      : 'var(--color-text-muted)',
+                  background:
+                    activeSection === item.sectionId
+                      ? 'color-mix(in srgb, var(--color-primary) 10%, transparent)'
+                      : 'transparent',
+                }}
               >
                 {t(item.label)}
               </a>
