@@ -1,5 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
+import { SectionContainer } from '../common/section_container';
+
 function ProjectsSection() {
   const { t } = useTranslation();
 
@@ -29,44 +31,48 @@ function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="flex min-h-screen items-center justify-center px-6 py-24"
+      className="flex min-h-screen items-center py-28 md:py-36"
     >
-      <div className="mx-auto w-full max-w-6xl">
-        <p
-          className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
-          style={{ color: 'var(--color-primary)' }}
-        >
-          {t('projects.eyebrow')}
-        </p>
+      <SectionContainer>
+        <div className="max-w-4xl">
+          <p
+            className="mb-5 text-sm font-semibold uppercase tracking-[0.35em]"
+            style={{ color: 'var(--color-primary)' }}
+          >
+            {t('projects.eyebrow')}
+          </p>
 
-        <h2 className="max-w-3xl text-4xl font-bold md:text-5xl">
-          {t('projects.title')}
-        </h2>
+          <h2 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            {t('projects.title')}
+          </h2>
+        </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-16 grid gap-8 lg:grid-cols-2">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="rounded-3xl border p-8 transition hover:-translate-y-1"
+              className="flex min-h-72 flex-col rounded-3xl border p-8 shadow-lg transition duration-300 hover:-translate-y-2 md:p-10"
               style={{
                 background: 'var(--color-surface)',
                 borderColor: 'var(--color-border)',
               }}
             >
-              <h3 className="text-2xl font-bold">{project.title}</h3>
+              <h3 className="text-2xl font-bold leading-tight md:text-3xl">
+                {project.title}
+              </h3>
 
               <p
-                className="mt-4 leading-7"
+                className="mt-5 flex-1 text-base leading-8 md:text-lg"
                 style={{ color: 'var(--color-text-muted)' }}
               >
                 {project.description}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-8 flex flex-wrap gap-3">
                 {project.stack.map((technology) => (
                   <span
                     key={technology}
-                    className="rounded-full border px-4 py-2 text-sm"
+                    className="rounded-full border px-4 py-2 text-sm font-medium"
                     style={{
                       borderColor: 'var(--color-border)',
                       color: 'var(--color-text-muted)',
@@ -79,7 +85,7 @@ function ProjectsSection() {
             </article>
           ))}
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 }
