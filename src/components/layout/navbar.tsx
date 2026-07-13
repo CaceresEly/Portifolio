@@ -19,6 +19,7 @@ function Navbar() {
 
     i18n.changeLanguage(nextLanguage);
     localStorage.setItem('language', nextLanguage);
+    document.documentElement.lang = nextLanguage;
   }
 
   return (
