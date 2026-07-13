@@ -1,6 +1,7 @@
 import { Navbar } from '../components/layout/navbar';
 import { AboutSection } from '../components/sections/about_section';
 import { ContactSection } from '../components/sections/contact_section';
+import { EducationSection } from '../components/sections/education_section';
 import { ExperienceSection } from '../components/sections/experience_section';
 import { ExpertiseSection } from '../components/sections/expertise_section';
 import { HeroSection } from '../components/sections/hero_section';
@@ -17,6 +18,7 @@ function App() {
         <ExpertiseSection />
         <ProjectsSection />
         <ExperienceSection />
+        <EducationSection />
         <ContactSection />
       </main>
     </>

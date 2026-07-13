@@ -73,6 +73,17 @@
     "highlight4": "Created HR request management systems with automated email summaries.",
     "highlight5": "Automated IBM Notes to SharePoint document migration using Python and Power Automate."
   },
+
+  "education": {
+  "eyebrow": "Education & Certifications",
+  "title": "Continuous learning applied to real-world solutions.",
+  "description": "My academic background and professional courses complement the practical experience gained through enterprise application development.",
+  "degreeLabel": "Academic Education",
+  "degree": "Technology Degree in Systems Analysis and Development",
+  "degreeStatus": "UNISINOS · Currently in progress",
+  "certificationsTitle": "Courses & Certifications"
+ },
+
   "contact": {
     "eyebrow": "Contact",
     "title": "Let's build something together.",

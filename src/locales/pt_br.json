@@ -73,6 +73,17 @@
     "highlight4": "Criação de sistemas de gerenciamento de solicitações de RH com resumos automáticos por e-mail.",
     "highlight5": "Automação da migração de documentos do IBM Notes para o SharePoint utilizando Python e Power Automate."
   },
+
+  "education": {
+  "eyebrow": "Formação e Certificações",
+  "title": "Aprendizado contínuo aplicado a soluções reais.",
+  "description": "Minha formação acadêmica e meus cursos profissionais complementam a experiência prática adquirida no desenvolvimento de aplicações corporativas.",
+  "degreeLabel": "Formação Acadêmica",
+  "degree": "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+  "degreeStatus": "UNISINOS · Em andamento",
+  "certificationsTitle": "Cursos e Certificações"
+ },
+
   "contact": {
     "eyebrow": "Contato",
     "title": "Vamos construir algo juntos.",
