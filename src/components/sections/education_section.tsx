@@ -1,10 +1,14 @@
 import { useTranslation } from 'react-i18next';
+import { FiAward, FiBookOpen } from 'react-icons/fi';
+
+import { SectionContainer } from '../common/section_container';
+import { SectionHeading } from '../common/section_heading';
 
 const certifications = [
   {
     name: 'Desenvolvimento Web Full Stack',
     institution: 'Digital House',
-    details: '264 hours',
+    details: '264 horas',
   },
   {
     name: 'Python',
@@ -12,8 +16,8 @@ const certifications = [
     details: '',
   },
   {
-    name: 'n8n — AI Process Automation',
-    institution: 'Online',
+    name: 'n8n — Automação de Processos com IA',
+    institution: 'Curso profissional',
     details: '',
   },
   {
@@ -27,82 +31,81 @@ function EducationSection() {
   const { t } = useTranslation();
 
   return (
-    <section
-      id="education"
-      className="flex min-h-screen items-center justify-center px-6 py-24"
-    >
-      <div className="mx-auto w-full max-w-6xl">
-        <p
-          className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
-          style={{ color: 'var(--color-primary)' }}
-        >
-          {t('education.eyebrow')}
-        </p>
+    <section id="education" className="py-28 lg:py-36">
+      <SectionContainer>
+        <SectionHeading
+          eyebrow={t('education.eyebrow')}
+          title={t('education.title')}
+          description={t('education.description')}
+        />
 
-        <h2 className="max-w-3xl text-4xl font-bold md:text-5xl">
-          {t('education.title')}
-        </h2>
+        <div className="mt-16 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <article className="glass-card interactive-card rounded-[2rem] p-8 lg:p-10">
+            <span
+              className="flex h-16 w-16 items-center justify-center rounded-2xl text-3xl"
+              style={{
+                background: 'var(--color-primary-soft)',
+                color: 'var(--color-primary)',
+              }}
+            >
+              <FiBookOpen />
+            </span>
 
-        <p
-          className="mt-6 max-w-3xl text-lg leading-8"
-          style={{ color: 'var(--color-text-muted)' }}
-        >
-          {t('education.description')}
-        </p>
-
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
-          <article
-            className="rounded-3xl border p-8"
-            style={{
-              background: 'var(--color-surface)',
-              borderColor: 'var(--color-border)',
-            }}
-          >
             <p
-              className="text-sm font-semibold uppercase tracking-[0.25em]"
+              className="mt-8 text-sm font-bold uppercase tracking-[0.25em]"
               style={{ color: 'var(--color-primary)' }}
             >
               {t('education.degreeLabel')}
             </p>
 
-            <h3 className="mt-5 text-2xl font-bold">
+            <h3 className="mt-4 text-2xl font-bold leading-tight lg:text-3xl">
               {t('education.degree')}
             </h3>
 
             <p
-              className="mt-4 text-lg"
+              className="mt-5 text-lg leading-7"
               style={{ color: 'var(--color-text-muted)' }}
             >
               UNISINOS — Universidade do Vale do Rio dos Sinos
             </p>
 
-            <p
-              className="mt-3"
-              style={{ color: 'var(--color-text-muted)' }}
+            <span
+              className="mt-6 inline-flex rounded-full border px-4 py-2 text-sm font-semibold"
+              style={{
+                borderColor: 'var(--color-border-strong)',
+                background: 'var(--color-primary-soft)',
+                color: 'var(--color-primary)',
+              }}
             >
               {t('education.degreeStatus')}
-            </p>
+            </span>
           </article>
 
           <div>
-            <h3 className="text-2xl font-bold">
+            <h3 className="flex items-center gap-3 text-2xl font-bold">
+              <FiAward style={{ color: 'var(--color-primary)' }} />
               {t('education.certificationsTitle')}
             </h3>
 
-            <div className="mt-6 grid gap-4">
-              {certifications.map((certification) => (
+            <div className="mt-7 grid gap-5 sm:grid-cols-2">
+              {certifications.map((certification, index) => (
                 <article
                   key={certification.name}
-                  className="rounded-2xl border p-5"
-                  style={{
-                    background: 'var(--color-surface)',
-                    borderColor: 'var(--color-border)',
-                  }}
+                  className="glass-card interactive-card rounded-3xl p-6"
                 >
-                  <h4 className="font-semibold">{certification.name}</h4>
+                  <span
+                    className="text-sm font-bold"
+                    style={{ color: 'var(--color-primary)' }}
+                  >
+                    0{index + 1}
+                  </span>
+
+                  <h4 className="mt-3 text-lg font-bold">
+                    {certification.name}
+                  </h4>
 
                   <p
-                    className="mt-2 text-sm"
+                    className="mt-3 text-sm leading-6"
                     style={{ color: 'var(--color-text-muted)' }}
                   >
                     {certification.institution}
@@ -116,7 +119,7 @@ function EducationSection() {
             </div>
           </div>
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 }

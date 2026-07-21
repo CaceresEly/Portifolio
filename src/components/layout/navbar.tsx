@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
+import {
+  FiGlobe,
+  FiMenu,
+  FiMoon,
+  FiSun,
+  FiX,
+} from 'react-icons/fi';
 
 import { useTheme } from '../../hooks/use_theme';
 
@@ -27,6 +33,20 @@ function Navbar() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  const currentLanguage = i18n.resolvedLanguage ?? i18n.language;
+
+  useEffect(() => {
+    function handleScroll() {
+      setHasScrolled(window.scrollY > 20);
+    }
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const sectionIds = ['home', ...navItems.map((item) => item.sectionId)];
@@ -37,17 +57,15 @@ function Navbar() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleEntries = entries
+        const visibleSections = entries
           .filter((entry) => entry.isIntersecting)
           .sort(
             (firstEntry, secondEntry) =>
               secondEntry.intersectionRatio - firstEntry.intersectionRatio,
           );
 
-        const mostVisibleSection = visibleEntries[0];
-
-        if (mostVisibleSection) {
-          setActiveSection(mostVisibleSection.target.id);
+        if (visibleSections[0]) {
+          setActiveSection(visibleSections[0].target.id);
         }
       },
       {
@@ -58,21 +76,16 @@ function Navbar() {
 
     sections.forEach((section) => observer.observe(section));
 
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   function toggleLanguage() {
-    const currentLanguage = i18n.resolvedLanguage ?? i18n.language;
     const nextLanguage = currentLanguage === 'en' ? 'pt-BR' : 'en';
 
     void i18n.changeLanguage(nextLanguage);
 
     localStorage.setItem('language', nextLanguage);
     document.documentElement.lang = nextLanguage;
-
     setIsMenuOpen(false);
   }
 
@@ -80,86 +93,101 @@ function Navbar() {
     setIsMenuOpen(false);
   }
 
-  function getLinkStyle(sectionId: string) {
-    return {
-      color:
-        activeSection === sectionId
-          ? 'var(--color-primary)'
-          : 'var(--color-text-muted)',
-    };
-  }
-
   return (
     <header
-      className="fixed left-0 top-0 z-50 w-full border-b backdrop-blur-xl"
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
+        hasScrolled ? 'border-b py-0' : 'border-transparent py-2'
+      }`}
       style={{
-        background:
-          'color-mix(in srgb, var(--color-background) 86%, transparent)',
+        background: hasScrolled
+          ? 'color-mix(in srgb, var(--color-background) 82%, transparent)'
+          : 'transparent',
         borderColor: 'var(--color-border)',
+        backdropFilter: hasScrolled ? 'blur(20px)' : 'none',
       }}
     >
-      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
         <a
           href="#home"
           onClick={closeMenu}
-          className="text-base font-bold tracking-tight transition md:text-lg"
-          style={{
-            color:
-              activeSection === 'home'
-                ? 'var(--color-primary)'
-                : 'var(--color-text)',
-          }}
+          className="group flex items-center gap-3 font-bold"
         >
-          Lucas Cáceres
+          <span
+            className="flex h-10 w-10 items-center justify-center rounded-xl text-lg"
+            style={{
+              background: 'var(--color-primary)',
+              color: 'var(--color-background)',
+              boxShadow: 'var(--shadow-primary)',
+            }}
+          >
+            LC
+          </span>
+
+          <span className="hidden text-lg tracking-tight sm:block">
+            Lucas Cáceres
+          </span>
         </a>
 
-        <div className="hidden items-center gap-7 lg:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="relative py-2 text-sm font-medium transition hover:opacity-80"
-              style={getLinkStyle(item.sectionId)}
-            >
-              {t(item.label)}
+        <div
+          className="hidden items-center gap-1 rounded-full border p-1.5 lg:flex"
+          style={{
+            background: 'var(--color-surface)',
+            borderColor: 'var(--color-border)',
+            backdropFilter: 'blur(18px)',
+          }}
+        >
+          {navItems.map((item) => {
+            const isActive = activeSection === item.sectionId;
 
-              {activeSection === item.sectionId && (
-                <span
-                  className="absolute bottom-0 left-0 h-0.5 w-full rounded-full"
-                  style={{ background: 'var(--color-primary)' }}
-                />
-              )}
-            </a>
-          ))}
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className="rounded-full px-4 py-2 text-sm font-medium transition"
+                style={{
+                  color: isActive
+                    ? 'var(--color-primary)'
+                    : 'var(--color-text-muted)',
+                  background: isActive
+                    ? 'var(--color-primary-soft)'
+                    : 'transparent',
+                }}
+              >
+                {t(item.label)}
+              </a>
+            );
+          })}
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <button
             type="button"
             onClick={toggleLanguage}
-            aria-label="Change language"
-            className="rounded-full border px-3 py-2 text-xs font-semibold transition hover:scale-105 sm:px-4 sm:text-sm"
+            className="flex h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold transition hover:-translate-y-0.5"
             style={{
               borderColor: 'var(--color-border)',
               background: 'var(--color-surface)',
               color: 'var(--color-text)',
             }}
+            aria-label="Change language"
           >
-            {(i18n.resolvedLanguage ?? i18n.language) === 'en'
-              ? 'PT-BR'
-              : 'EN'}
+            <FiGlobe />
+
+            <span className="hidden sm:inline">
+              {currentLanguage === 'en' ? 'PT-BR' : 'EN'}
+            </span>
           </button>
 
           <button
             type="button"
             onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="flex h-10 w-10 items-center justify-center rounded-full border text-lg transition hover:scale-105"
+            className="flex h-11 w-11 items-center justify-center rounded-full border text-lg transition hover:-translate-y-0.5"
             style={{
               borderColor: 'var(--color-border)',
               background: 'var(--color-surface)',
               color: 'var(--color-text)',
             }}
+            aria-label="Toggle theme"
           >
             {theme === 'dark' ? <FiSun /> : <FiMoon />}
           </button>
@@ -167,14 +195,14 @@ function Navbar() {
           <button
             type="button"
             onClick={() => setIsMenuOpen((current) => !current)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={isMenuOpen}
-            className="flex h-10 w-10 items-center justify-center rounded-full border text-xl lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border text-xl lg:hidden"
             style={{
               borderColor: 'var(--color-border)',
               background: 'var(--color-surface)',
               color: 'var(--color-text)',
             }}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <FiX /> : <FiMenu />}
           </button>
@@ -182,34 +210,37 @@ function Navbar() {
       </nav>
 
       {isMenuOpen && (
-        <div
-          className="border-t px-6 py-5 lg:hidden"
-          style={{
-            background: 'var(--color-surface)',
-            borderColor: 'var(--color-border)',
-          }}
-        >
-          <div className="mx-auto flex max-w-6xl flex-col gap-2">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={closeMenu}
-                className="rounded-xl px-4 py-3 text-sm font-medium transition"
-                style={{
-                  color:
-                    activeSection === item.sectionId
+        <div className="px-6 pb-5 lg:hidden">
+          <div
+            className="mx-auto flex max-w-7xl flex-col gap-1 rounded-3xl border p-3"
+            style={{
+              background: 'var(--color-surface-solid)',
+              borderColor: 'var(--color-border)',
+              boxShadow: 'var(--shadow-card)',
+            }}
+          >
+            {navItems.map((item) => {
+              const isActive = activeSection === item.sectionId;
+
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMenu}
+                  className="rounded-2xl px-5 py-3 text-sm font-medium"
+                  style={{
+                    color: isActive
                       ? 'var(--color-primary)'
                       : 'var(--color-text-muted)',
-                  background:
-                    activeSection === item.sectionId
-                      ? 'color-mix(in srgb, var(--color-primary) 10%, transparent)'
+                    background: isActive
+                      ? 'var(--color-primary-soft)'
                       : 'transparent',
-                }}
-              >
-                {t(item.label)}
-              </a>
-            ))}
+                  }}
+                >
+                  {t(item.label)}
+                </a>
+              );
+            })}
           </div>
         </div>
       )}

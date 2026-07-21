@@ -1,10 +1,21 @@
 import { useTranslation } from 'react-i18next';
+import {
+  FiCloud,
+  FiCode,
+  FiCpu,
+  FiLayers,
+} from 'react-icons/fi';
+
+import { SectionContainer } from '../common/section_container';
+import { SectionHeading } from '../common/section_heading';
+import { TechnologyBadge } from '../common/technology_badge';
 
 function ExpertiseSection() {
   const { t } = useTranslation();
 
   const expertiseGroups = [
     {
+      icon: FiLayers,
       title: t('expertise.enterpriseTitle'),
       description: t('expertise.enterpriseDescription'),
       skills: [
@@ -16,6 +27,7 @@ function ExpertiseSection() {
       ],
     },
     {
+      icon: FiCode,
       title: t('expertise.fullStackTitle'),
       description: t('expertise.fullStackDescription'),
       skills: [
@@ -29,6 +41,7 @@ function ExpertiseSection() {
       ],
     },
     {
+      icon: FiCpu,
       title: t('expertise.automationTitle'),
       description: t('expertise.automationDescription'),
       skills: [
@@ -40,6 +53,7 @@ function ExpertiseSection() {
       ],
     },
     {
+      icon: FiCloud,
       title: t('expertise.toolsTitle'),
       description: t('expertise.toolsDescription'),
       skills: ['Git', 'Azure', 'MySQL', 'PostgreSQL', 'Next.js', 'Vue'],
@@ -49,64 +63,68 @@ function ExpertiseSection() {
   return (
     <section
       id="skills"
-      className="flex min-h-screen items-center justify-center px-6 py-24"
+      className="py-28 lg:py-36"
+      style={{ background: 'var(--color-background-secondary)' }}
     >
-      <div className="mx-auto w-full max-w-6xl">
-        <p
-          className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
-          style={{ color: 'var(--color-primary)' }}
-        >
-          {t('expertise.eyebrow')}
-        </p>
+      <SectionContainer>
+        <SectionHeading
+          eyebrow={t('expertise.eyebrow')}
+          title={t('expertise.title')}
+          description={t('expertise.description')}
+          centered
+        />
 
-        <h2 className="max-w-3xl text-4xl font-bold md:text-5xl">
-          {t('expertise.title')}
-        </h2>
+        <div className="mt-16 grid gap-7 md:grid-cols-2">
+          {expertiseGroups.map((group, index) => {
+            const Icon = group.icon;
 
-        <p
-          className="mt-6 max-w-3xl text-lg leading-8"
-          style={{ color: 'var(--color-text-muted)' }}
-        >
-          {t('expertise.description')}
-        </p>
-
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {expertiseGroups.map((group) => (
-            <article
-              key={group.title}
-              className="rounded-3xl border p-8 transition hover:-translate-y-1"
-              style={{
-                background: 'var(--color-surface)',
-                borderColor: 'var(--color-border)',
-              }}
-            >
-              <h3 className="text-2xl font-bold">{group.title}</h3>
-
-              <p
-                className="mt-4 leading-7"
-                style={{ color: 'var(--color-text-muted)' }}
+            return (
+              <article
+                key={group.title}
+                className="glass-card interactive-card rounded-[2rem] p-8 lg:p-10"
               >
-                {group.description}
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                {group.skills.map((skill) => (
+                <div className="flex items-center justify-between">
                   <span
-                    key={skill}
-                    className="rounded-full border px-4 py-2 text-sm"
+                    className="flex h-14 w-14 items-center justify-center rounded-2xl text-2xl"
                     style={{
-                      borderColor: 'var(--color-border)',
-                      color: 'var(--color-text-muted)',
+                      background: 'var(--color-primary-soft)',
+                      color: 'var(--color-primary)',
                     }}
                   >
-                    {skill}
+                    <Icon />
                   </span>
-                ))}
-              </div>
-            </article>
-          ))}
+
+                  <span
+                    className="text-4xl font-bold opacity-20"
+                    style={{ color: 'var(--color-primary)' }}
+                  >
+                    0{index + 1}
+                  </span>
+                </div>
+
+                <h3 className="mt-8 text-2xl font-bold lg:text-3xl">
+                  {group.title}
+                </h3>
+
+                <p
+                  className="mt-4 text-base leading-7 lg:text-lg"
+                  style={{ color: 'var(--color-text-muted)' }}
+                >
+                  {group.description}
+                </p>
+
+                <div className="mt-7 flex flex-wrap gap-3">
+                  {group.skills.map((skill) => (
+                    <TechnologyBadge key={skill}>
+                      {skill}
+                    </TechnologyBadge>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 }

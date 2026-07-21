@@ -1,107 +1,96 @@
 import { useTranslation } from 'react-i18next';
+import { FiBriefcase, FiCode, FiGlobe } from 'react-icons/fi';
+
+import { SectionContainer } from '../common/section_container';
+import { SectionHeading } from '../common/section_heading';
 
 function AboutSection() {
   const { t } = useTranslation();
 
+  const details = [
+    {
+      icon: FiBriefcase,
+      title: t('about.experienceTitle'),
+      text: t('about.experienceText'),
+    },
+    {
+      icon: FiCode,
+      title: t('about.technologiesTitle'),
+      text: t('about.technologiesText'),
+    },
+    {
+      icon: FiGlobe,
+      title: t('about.languagesTitle'),
+      text: `${t('about.portuguese')} · ${t('about.english')}`,
+    },
+  ];
+
   return (
-    <section
-      id="about"
-      className="flex min-h-screen items-center justify-center px-6 py-24"
-    >
-      <div className="mx-auto grid w-full max-w-6xl gap-16 md:grid-cols-2">
-        <div>
-          <p
-            className="mb-4 text-sm font-semibold uppercase tracking-[0.35em]"
-            style={{ color: 'var(--color-primary)' }}
-          >
-            {t('about.eyebrow')}
-          </p>
+    <section id="about" className="py-28 lg:py-36">
+      <SectionContainer>
+        <div className="grid gap-16 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+          <div>
+            <SectionHeading
+              eyebrow={t('about.eyebrow')}
+              title={t('about.title')}
+            />
 
-          <h2 className="text-4xl font-bold">{t('about.title')}</h2>
-
-          <p
-            className="mt-8 text-lg leading-8"
-            style={{ color: 'var(--color-text-muted)' }}
-          >
-            {t('about.paragraph1')}
-          </p>
-
-          <p
-            className="mt-6 text-lg leading-8"
-            style={{ color: 'var(--color-text-muted)' }}
-          >
-            {t('about.paragraph2')}
-          </p>
-
-          <p
-            className="mt-6 text-lg leading-8"
-            style={{ color: 'var(--color-text-muted)' }}
-          >
-            {t('about.paragraph3')}
-          </p>
-        </div>
-
-        <div className="grid gap-6">
-          <div
-            className="rounded-2xl border p-6"
-            style={{
-              background: 'var(--color-surface)',
-              borderColor: 'var(--color-border)',
-            }}
-          >
-            <h3 className="text-xl font-semibold">
-              {t('about.experienceTitle')}
-            </h3>
-
-            <p
-              className="mt-4"
+            <div
+              className="mt-10 space-y-6 text-lg leading-8"
               style={{ color: 'var(--color-text-muted)' }}
             >
-              {t('about.experienceText')}
-            </p>
+              <p>{t('about.paragraph1')}</p>
+              <p>{t('about.paragraph2')}</p>
+              <p>{t('about.paragraph3')}</p>
+            </div>
           </div>
 
-          <div
-            className="rounded-2xl border p-6"
-            style={{
-              background: 'var(--color-surface)',
-              borderColor: 'var(--color-border)',
-            }}
-          >
-            <h3 className="text-xl font-semibold">
-              {t('about.technologiesTitle')}
-            </h3>
+          <div className="grid gap-5">
+            {details.map((detail, index) => {
+              const Icon = detail.icon;
 
-            <p
-              className="mt-4"
-              style={{ color: 'var(--color-text-muted)' }}
-            >
-              {t('about.technologiesText')}
-            </p>
-          </div>
+              return (
+                <article
+                  key={detail.title}
+                  className="glass-card interactive-card rounded-3xl p-7"
+                >
+                  <div className="flex items-start gap-5">
+                    <span
+                      className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-2xl"
+                      style={{
+                        background: 'var(--color-primary-soft)',
+                        color: 'var(--color-primary)',
+                      }}
+                    >
+                      <Icon />
+                    </span>
 
-          <div
-            className="rounded-2xl border p-6"
-            style={{
-              background: 'var(--color-surface)',
-              borderColor: 'var(--color-border)',
-            }}
-          >
-            <h3 className="text-xl font-semibold">
-              {t('about.languagesTitle')}
-            </h3>
+                    <div>
+                      <span
+                        className="text-xs font-bold"
+                        style={{ color: 'var(--color-primary)' }}
+                      >
+                        0{index + 1}
+                      </span>
 
-            <p
-              className="mt-4"
-              style={{ color: 'var(--color-text-muted)' }}
-            >
-              {t('about.portuguese')}
-              <br />
-              {t('about.english')}
-            </p>
+                      <h3 className="mt-1 text-xl font-bold">
+                        {detail.title}
+                      </h3>
+
+                      <p
+                        className="mt-3 leading-7"
+                        style={{ color: 'var(--color-text-muted)' }}
+                      >
+                        {detail.text}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
-      </div>
+      </SectionContainer>
     </section>
   );
 }
