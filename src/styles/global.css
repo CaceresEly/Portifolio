@@ -201,9 +201,11 @@ section{
 
   border:1px solid var(--color-border);
 
+  border-radius:var(--radius-card);
+
   background:var(--color-surface);
 
-  backdrop-filter:blur(18px);
+  backdrop-filter:blur(22px);
 
   box-shadow:var(--shadow-card);
 
@@ -211,23 +213,28 @@ section{
 
 .interactive-card{
 
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease,
-    background-color .35s ease,
-    border-color .35s ease;
+transition:
+transform var(--transition),
+box-shadow var(--transition),
+background var(--transition),
+border-color var(--transition);
 
 }
 
 .interactive-card:hover{
 
-  transform:translateY(-10px);
+transform:
+translateY(-8px)
+scale(1.015);
 
-  border-color:var(--color-border-strong);
+border-color:
+var(--color-border-strong);
 
-  background:var(--color-surface-hover);
+background:
+var(--color-surface-hover);
 
-  box-shadow:var(--shadow-primary);
+box-shadow:
+var(--shadow-primary);
 
 }
 
@@ -407,5 +414,43 @@ font-size:3rem;
 font-size:1.05rem;
 
 }
+
+}
+
+.glow{
+
+position:relative;
+
+}
+
+.glow::before{
+
+content:"";
+
+position:absolute;
+
+inset:-1px;
+
+border-radius:inherit;
+
+background:
+linear-gradient(
+135deg,
+rgba(34,211,238,.15),
+transparent,
+rgba(56,189,248,.12)
+);
+
+opacity:0;
+
+transition:.4s;
+
+pointer-events:none;
+
+}
+
+.glow:hover::before{
+
+opacity:1;
 
 }
