@@ -56,7 +56,7 @@ function ProjectsSection() {
             return (
               <article
                 key={project.title}
-                className="glass-card interactive-card group flex min-h-96 flex-col rounded-[2rem] p-8 lg:p-10"
+                className="glass-card interactive-card group flex flex-col rounded-[2rem] p-6 sm:min-h-96 sm:p-8 lg:p-10"
               >
                 <div className="flex items-start justify-between">
                   <span

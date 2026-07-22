@@ -115,11 +115,11 @@ function HeroSection() {
               {t('hero.description')}
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href={resumePath}
                 download={resumeFileName}
-                className="flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold transition hover:-translate-y-1"
+                className="flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold transition hover:-translate-y-1"
                 style={{
                   background: 'var(--color-primary)',
                   color: 'var(--color-background)',
@@ -134,7 +134,7 @@ function HeroSection() {
                 href={resumePath}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 rounded-full border px-6 py-3.5 text-sm font-bold transition hover:-translate-y-1"
+                className="flex min-h-12 items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-bold transition hover:-translate-y-1"
                 style={{
                   borderColor: 'var(--color-border-strong)',
                   background: 'var(--color-surface)',
@@ -147,7 +147,7 @@ function HeroSection() {
 
               <a
                 href="#contact"
-                className="flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold transition hover:-translate-y-1"
+                className="flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-bold transition hover:-translate-y-1"
                 style={{ color: 'var(--color-text)' }}
               >
                 {t('hero.contact')}

@@ -106,7 +106,7 @@ function Navbar() {
         backdropFilter: hasScrolled ? 'blur(20px)' : 'none',
       }}
     >
-      <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
+      <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-8 lg:px-12">
         <a
           href="#home"
           onClick={closeMenu}
@@ -210,7 +210,7 @@ function Navbar() {
       </nav>
 
       {isMenuOpen && (
-        <div className="px-6 pb-5 lg:hidden">
+        <div className="px-4 pb-5 sm:px-8 lg:hidden">
           <div
             className="mx-auto flex max-w-7xl flex-col gap-1 rounded-3xl border p-3"
             style={{
