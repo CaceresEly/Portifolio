@@ -417,6 +417,120 @@ font-size:1.05rem;
 
 }
 
+@media (max-width:768px){
+
+html{
+scroll-padding-top:80px;
+}
+
+.section-container{
+padding-left:20px;
+padding-right:20px;
+}
+
+.section-spacing{
+padding-top:5rem;
+padding-bottom:5rem;
+}
+
+.section-title{
+font-size:clamp(2.25rem,11vw,3rem);
+line-height:1.08;
+overflow-wrap:anywhere;
+}
+
+.section-subtitle{
+margin-top:16px;
+font-size:1rem;
+line-height:1.75;
+}
+
+.section-label{
+letter-spacing:.22rem;
+}
+
+.glass-card{
+border-radius:22px;
+backdrop-filter:blur(16px);
+}
+
+.primary-button,
+.secondary-button{
+justify-content:center;
+min-height:48px;
+padding:12px 20px;
+}
+
+.interactive-card:hover{
+transform:none;
+}
+
+}
+
+@media (max-width:480px){
+
+.section-container{
+padding-left:16px;
+padding-right:16px;
+}
+
+.section-spacing{
+padding-top:4rem;
+padding-bottom:4rem;
+}
+
+.section-title{
+font-size:clamp(2rem,11vw,2.5rem);
+}
+
+.section-subtitle{
+line-height:1.65;
+}
+
+.primary-button,
+.secondary-button{
+width:100%;
+}
+
+.tech-badge{
+padding:8px 13px;
+font-size:.82rem;
+}
+
+}
+
+@media (hover:none){
+
+.interactive-card:hover,
+.primary-button:hover,
+.secondary-button:hover,
+.tech-badge:hover{
+transform:none;
+}
+
+.glow:hover::before{
+opacity:0;
+}
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+html{
+scroll-behavior:auto;
+}
+
+*,
+*::before,
+*::after{
+scroll-behavior:auto !important;
+transition-duration:.01ms !important;
+animation-duration:.01ms !important;
+animation-iteration-count:1 !important;
+}
+
+}
+
 .glow{
 
 position:relative;
